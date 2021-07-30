@@ -47,6 +47,7 @@
   <PropertyGroup>
     <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <UnityProjectGenerator>Unity/VSTU</UnityProjectGenerator>
+    <UnityProjectGeneratorVersion>4.10.3.0</UnityProjectGeneratorVersion>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows:5</UnityBuildTarget>
     <UnityVersion>2019.4.19f1</UnityVersion>
@@ -66,9 +67,13 @@
     <Compile Include="Assets\Scripts\EnemyController.cs" />
     <Compile Include="Assets\Scripts\EnemySpawner.cs" />
     <Compile Include="Assets\Scripts\Health.cs" />
-    <Compile Include="Assets\Scripts\HeartSystem.cs" />
+    <Compile Include="Assets\Scripts\Mana.cs" />
+    <Compile Include="Assets\Scripts\Pickup.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
+    <Compile Include="Assets\Scripts\PlayerUI.cs" />
     <Compile Include="Assets\Scripts\Projectile.cs" />
+    <Compile Include="Assets\Scripts\ProjectileDestroyer.cs" />
+    <Compile Include="Assets\Scripts\Shield.cs" />
     <Compile Include="Assets\Scripts\Shooting.cs" />
     <Reference Include="UnityEngine">
       <HintPath>E:/UNITY/2019.4.19f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>

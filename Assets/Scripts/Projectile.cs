@@ -8,14 +8,23 @@ public class Projectile : MonoBehaviour
     readonly float destroyEffectTime = 0.05f;
     public int projectileDamage;
 
+    public bool isPlayer = true;
+
     public float projectileSpeed = 10f;
     public float destroyTime = 2f;
 
+    private void Start()
+    {
+        GetComponent<Rigidbody2D>().freezeRotation = true;
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        GameObject effect = Instantiate(hitEffect, transform.position, Quaternion.identity);
-        Destroy(effect, destroyEffectTime);
-        
+        if (CollisionCheck(collision))
+            return;
+
+        SpawnEffect();
+
         collision.GetComponent<Health>().TakeDamage(projectileDamage);
         
         Destroy(gameObject);
@@ -35,4 +44,33 @@ public class Projectile : MonoBehaviour
         Destroy(projectile, destroyTime);
     }
 
+    public void SpawnEffect()
+    {
+        GameObject effect = Instantiate(hitEffect, transform.position, Quaternion.identity);
+        Destroy(effect, destroyEffectTime);
+    }
+
+    public void DestroyProjectile()
+    {
+        SpawnEffect();
+        Destroy(gameObject);
+    }
+
+    private bool CollisionCheck(Collider2D collision)
+    {
+        if (isPlayer && collision.gameObject.GetComponent<PlayerController>())
+            return true;
+
+        if (collision.CompareTag("Walls"))
+        {
+            DestroyProjectile();
+            return true;
+        }
+
+        if (collision.GetComponent<Health>() == null)
+            return true;
+
+
+        return false;
+    }
 }

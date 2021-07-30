@@ -27,7 +27,6 @@ public class EnemySpawner : MonoBehaviour
             Vector2 enemyPosition = new Vector2(xPos, yPos);
 
             Instantiate(enemy, enemyPosition, Quaternion.identity);
-
         }
     }
     

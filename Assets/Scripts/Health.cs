@@ -9,7 +9,8 @@ public class Health : MonoBehaviour
     public int numOfHearts = 3;
     public int maxHealth;
     Image[] heartsImages;
-    public HeartSystem hearts;
+    public PlayerUI hearts;
+    Shield shieldSystem;
 
     [SerializeField]GameObject character;
 
@@ -19,6 +20,7 @@ public class Health : MonoBehaviour
         {
             heartsImages = hearts.hearts;
             maxHealth = numOfHearts;
+            shieldSystem = GetComponent<Shield>();
         }
     }
 
@@ -29,11 +31,18 @@ public class Health : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        health -= damage;
-        GetComponent<Animator>().SetTrigger("takeDamage");
-        if (health <= 0)
+        if (CheckShield())
         {
-            Die();
+            shieldSystem.TakeShield(damage);
+        }
+        else
+        {
+            health -= damage;
+            GetComponent<Animator>().SetTrigger("takeDamage");
+            if (health <= 0)
+            {
+                Die();
+            }
         }
     }
 
@@ -83,5 +92,24 @@ public class Health : MonoBehaviour
     public void AddHeart()
     {
         numOfHearts++;
+    }
+
+    public bool CheckShield()
+    {
+        if (gameObject.CompareTag("Player"))
+        {
+            if (shieldSystem.IsShieldEmpty())
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        else
+        {
+            return false;
+        }
     }
 }

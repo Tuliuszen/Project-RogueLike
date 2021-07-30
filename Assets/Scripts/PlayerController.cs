@@ -26,6 +26,8 @@ public class PlayerController : MonoBehaviour
         shooter = GetComponent<Shooting>();
 
         Cursor.visible = false;
+
+        rb.freezeRotation = true;
     }
 
     void Update()
@@ -57,7 +59,7 @@ public class PlayerController : MonoBehaviour
 
     private void Move()
     {
-        rb.MovePosition(rb.position + movementDirection * moveSpeed * Time.fixedDeltaTime);
+        rb.MovePosition(rb.position + moveSpeed * Time.fixedDeltaTime * movementDirection);
 
         lookDirection = mousePosition - rb.position;
     }
@@ -72,5 +74,10 @@ public class PlayerController : MonoBehaviour
     void MoveCrossHair()
     {
         crossHair.transform.position = mousePosition;
+    }
+
+    public void AddBasicDamage(int amount)
+    {
+        damage += amount;
     }
 }

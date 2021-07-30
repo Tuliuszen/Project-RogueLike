@@ -13,25 +13,25 @@ public class EnemyController : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        rb.freezeRotation = true;
     }
 
     private void FixedUpdate()
     {
-        MoveToTarget();
+        StartCoroutine(MoveAction());
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.GetComponent<PlayerController>() != null)
+        if (collision.gameObject.GetComponent<PlayerController>() != null)
         {
-            collision.GetComponent<Health>().TakeDamage(damage);
+            collision.gameObject.GetComponent<Health>().TakeDamage(damage);
         }
     }
 
-
     private void Move(Vector2 movementDirection)
     {
-        rb.MovePosition(rb.position + movementDirection * moveSpeed * Time.fixedDeltaTime);
+        rb.MovePosition(rb.position + moveSpeed * Time.fixedDeltaTime * movementDirection);
     }
 
     void GetPlayerPosition()
@@ -46,5 +46,11 @@ public class EnemyController : MonoBehaviour
             GetPlayerPosition();
             Move(playerPos);
         }
+    }
+
+    IEnumerator MoveAction()
+    {
+        MoveToTarget();
+        yield return new WaitForSeconds(0.5f);
     }
 }

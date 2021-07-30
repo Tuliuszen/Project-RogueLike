@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Projectile
+  - Walls
   layers:
   - Default
   - TransparentFX
@@ -13,10 +15,10 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
-  - 
+  - Projectiles
+  - Pickups
+  - Player
+  - Enemy
   - 
   - 
   - 
@@ -52,6 +54,9 @@ TagManager:
     locked: 0
   - name: Enemy
     uniqueID: 789193295
+    locked: 0
+  - name: pickup
+    uniqueID: 242423687
     locked: 0
   - name: walls
     uniqueID: 2632308565
