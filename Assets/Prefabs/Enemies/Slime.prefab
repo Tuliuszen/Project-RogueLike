@@ -34,7 +34,7 @@ PrefabInstance:
     - target: {fileID: -8797691716821809783, guid: 638d4dd6851b84b4a8b777627edf2229,
         type: 3}
       propertyPath: moveSpeed
-      value: 0.2
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4136115698471854846, guid: 638d4dd6851b84b4a8b777627edf2229,
         type: 3}
@@ -107,6 +107,16 @@ PrefabInstance:
       propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5732581744726848216, guid: 638d4dd6851b84b4a8b777627edf2229,
+        type: 3}
+      propertyPath: m_BodyType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5732581744726848216, guid: 638d4dd6851b84b4a8b777627edf2229,
+        type: 3}
+      propertyPath: m_UseFullKinematicContacts
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5732581744726848217, guid: 638d4dd6851b84b4a8b777627edf2229,
         type: 3}
       propertyPath: m_Size.x
@@ -126,6 +136,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Offset.y
       value: -0.11625075
+      objectReference: {fileID: 0}
+    - target: {fileID: 5732581744726848217, guid: 638d4dd6851b84b4a8b777627edf2229,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5732581744726848218, guid: 638d4dd6851b84b4a8b777627edf2229,
         type: 3}

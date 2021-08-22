@@ -9,22 +9,15 @@ public class PlayerController : MonoBehaviour
     public Rigidbody2D rb;
     public Animator animator;
 
-    public int damage = 1;
-
     public Camera cam;
-
-    Shooting shooter;
 
     public Vector2 movementDirection;
     public Vector2 mousePosition;
-    Vector2 lookDirection;
 
     [SerializeField] float moveSpeed = 5f;
 
     public void Start()
     {
-        shooter = GetComponent<Shooting>();
-
         Cursor.visible = false;
 
         rb.freezeRotation = true;
@@ -32,11 +25,6 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetButtonDown("Fire1"))
-        {
-            shooter.Shoot(lookDirection);
-        }
-
         MoveInput();
 
         MoveCrossHair();
@@ -60,8 +48,6 @@ public class PlayerController : MonoBehaviour
     private void Move()
     {
         rb.MovePosition(rb.position + moveSpeed * Time.fixedDeltaTime * movementDirection);
-
-        lookDirection = mousePosition - rb.position;
     }
 
     private void MovementAnimation()
@@ -76,8 +62,20 @@ public class PlayerController : MonoBehaviour
         crossHair.transform.position = mousePosition;
     }
 
-    public void AddBasicDamage(int amount)
+    public Vector2 GetLookDirection()
     {
-        damage += amount;
+        return mousePosition;
+    }
+
+    public bool HasManaForSkill(int skillCost, int currentMana)
+    {
+        if (currentMana >= skillCost)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }

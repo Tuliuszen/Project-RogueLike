@@ -21,7 +21,7 @@ public class Pickup : MonoBehaviour
             collision.GetComponent<Mana>().GainMana(mana);
             collision.GetComponent<Health>().Heal(health);
             collision.GetComponent<Shield>().GainShield(shield);
-            collision.GetComponent<PlayerController>().AddBasicDamage(damage);
+            collision.GetComponent<Fighter>().AddBasicDamage(damage);
 
             if (addHeart)
                 collision.GetComponent<Health>().AddHeart();

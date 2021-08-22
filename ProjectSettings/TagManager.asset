@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Projectile
   - Walls
+  - Background
+  - Void
   layers:
   - Default
   - TransparentFX
@@ -61,6 +63,6 @@ TagManager:
   - name: walls
     uniqueID: 2632308565
     locked: 0
-  - name: Life
+  - name: UI
     uniqueID: 478109975
     locked: 0

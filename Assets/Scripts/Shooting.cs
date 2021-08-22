@@ -24,7 +24,7 @@ public class Shooting : MonoBehaviour
     {
         if (GetComponent<PlayerController>() != null)
         {
-            PlayerController player = GetComponent<PlayerController>();
+            Fighter player = GetComponent<Fighter>();
             damage = player.damage;
         }
         else if (GetComponent<EnemyController>() != null)
