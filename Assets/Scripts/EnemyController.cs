@@ -9,21 +9,27 @@ public class EnemyController : MonoBehaviour
     float angle;
     public bool movesToPlayer = true;
     public bool rotates = false;
-    public Transform player;
+    public bool shooter = false;
+    public GameObject projectile;
+    Transform player;
+    public Projectile projectileScript;
+    public int pDMG = 1;
     Rigidbody2D rb;
     Vector2 direction, movement;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        
-        if(!rotates)
+        player = FindObjectOfType<PlayerController>().transform;
+
+        if (!rotates)
             rb.freezeRotation = true;
     }
 
     private void Update()
     {
         Move();
+        StartCoroutine(ShootingPlayer());
     }
 
     private void FixedUpdate()
@@ -55,13 +61,35 @@ public class EnemyController : MonoBehaviour
 
     void MoveCharacter(Vector2 direction)
     {
-        rb.MovePosition((Vector2)transform.position + (direction * moveSpeed * Time.deltaTime));
+        rb.MovePosition((Vector2)transform.position + (moveSpeed * Time.deltaTime * direction));
+    }
+
+    IEnumerator ShootingPlayer()
+    {
+        ShootPlayer();
+        yield return new WaitForSecondsRealtime(3);
+    }
+    
+    void ShootPlayer()
+    {
+        if (shooter)
+        {
+            projectileScript.InstantiateProjectile(projectile, pDMG, player.position, gameObject.transform);
+            //GetComponent<Animator>().SetTrigger("isAttacking");
+        }
+        return;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.GetComponent<PlayerController>() != null)
         {
+            //if warrior check for immunity
+            if(collision.gameObject.GetComponent<Warrior>()!= null)
+            {
+                if (collision.gameObject.GetComponent<Warrior>().immune == true)
+                    return;
+            } 
             collision.gameObject.GetComponent<Health>().TakeDamage(damage);
         }
     }

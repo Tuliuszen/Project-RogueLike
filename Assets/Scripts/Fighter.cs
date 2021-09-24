@@ -5,7 +5,7 @@ using UnityEngine;
 public class Fighter : MonoBehaviour
 {
     public int damage = 1;
-    public float attackSpeed = 1;
+    public float attackSpeed = 0.5f;
 
     public bool melee = false;
 
@@ -21,10 +21,7 @@ public class Fighter : MonoBehaviour
     void Update()
     {
         lookDirection = GetComponent<PlayerController>().GetLookDirection();
-        if (Input.GetButtonDown("Fire1"))
-        {
-            shooter.Shoot(lookDirection - GetComponent<Rigidbody2D>().position);
-        }
+        AttackAction();
     }
 
     public void Attack()
@@ -35,18 +32,24 @@ public class Fighter : MonoBehaviour
         }
         else
         {
-            StartCoroutine(Attacking());
+            shooter.Shoot(lookDirection - GetComponent<Rigidbody2D>().position);
         }
-    }
-
-    IEnumerator Attacking()
-    {
-        shooter.Shoot(lookDirection - GetComponent<Rigidbody2D>().position);
-        yield return new WaitForSeconds(attackSpeed);
     }
 
     public void AddBasicDamage(int amount)
     {
         damage += amount;
+    }
+
+    void AttackAction()
+    {
+        if (Input.GetButtonDown("Fire1"))
+        {
+            InvokeRepeating(nameof(Attack), 0.01f, attackSpeed);
+        }
+        else if (Input.GetButtonUp("Fire1"))
+        {
+            CancelInvoke("Attack");
+        }
     }
 }

@@ -44,6 +44,7 @@ public class Wizard : MonoBehaviour
         if(pController.HasManaForSkill(fireballCost,GetComponent<Mana>().mana))
         {
             projectile.InstantiateProjectile(fireball, FireballDamage, GetTarget(), shootingPoint);
+            GetComponent<Animator>().SetTrigger("isAttacking");
             GetComponent<Mana>().mana -= fireballCost;
         }
         else
@@ -99,4 +100,6 @@ public class Wizard : MonoBehaviour
     {
         gameObject.transform.position = teleportTarget.position;
     }
+
+    //Ult for wizard
 }

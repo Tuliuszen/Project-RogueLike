@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1656072699
+--- !u!1 &319903659285656645
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,36 +8,36 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1656072701}
-  - component: {fileID: 1656072700}
+  - component: {fileID: 5828166935829444505}
+  - component: {fileID: 9011662688217463552}
   m_Layer: 0
-  m_Name: CrossHair
+  m_Name: Crosshair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1656072701
+--- !u!4 &5828166935829444505
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1656072699}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_GameObject: {fileID: 319903659285656645}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5910723572889555292}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &1656072700
+--- !u!212 &9011662688217463552
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1656072699}
+  m_GameObject: {fileID: 319903659285656645}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -67,8 +67,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1030192773
-  m_SortingLayer: 3
+  m_SortingLayerID: 478109975
+  m_SortingLayer: 7
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 0c516ce823ad3b8488cdaf9de2f4c9c3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -100,13 +100,16 @@ GameObject:
   - component: {fileID: 5910723572698646212}
   - component: {fileID: 5910723572698646227}
   - component: {fileID: 5910723572698646226}
+  - component: {fileID: 1394402032}
+  - component: {fileID: 1298312494676976962}
+  - component: {fileID: 1394402033}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5910723572889555292
 Transform:
   m_ObjectHideFlags: 0
@@ -119,7 +122,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 9177224844689040705}
-  - {fileID: 1656072701}
+  - {fileID: 5828166935829444505}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -182,10 +185,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b296121ec3684c458bb87063bd404c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  crossHair: {fileID: 1656072699}
+  crossHair: {fileID: 319903659285656645}
   rb: {fileID: 5910723572889555293}
   animator: {fileID: 5910723572889555282}
-  damage: 1
   cam: {fileID: 0}
   movementDirection: {x: 0, y: 0}
   mousePosition: {x: 0, y: 0}
@@ -325,9 +327,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b33875c2e5320c94aa191a27d117dc54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mana: 0
-  maxMana: 0
-  numOfMana: 0
+  mana: 4
+  maxMana: 4
+  numOfMana: 4
   manaImages: []
   manaPoints: {fileID: 5910723572698646226}
 --- !u!114 &5910723572698646226
@@ -386,6 +388,53 @@ MonoBehaviour:
   fullShield: {fileID: 8714566961431623855, guid: f0b64699db80313479763e82b22b48df,
     type: 3}
   emptyShield: {fileID: -308525854134629867, guid: f0b64699db80313479763e82b22b48df,
+    type: 3}
+--- !u!114 &1394402032
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5910723572889555288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2204c764d7373b44b93e006b3704f9fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 1
+  attackSpeed: 0.6
+  melee: 0
+--- !u!114 &1298312494676976962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5910723572889555288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2204c764d7373b44b93e006b3704f9fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 1
+  attackSpeed: 1
+  melee: 0
+--- !u!114 &1394402033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5910723572889555288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4507a11d0fabeb042b93c1432b628aa1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireball: {fileID: 3462690102366221657, guid: ba5e911755835bb4593b200590a860a6,
+    type: 3}
+  teleportTarget: {fileID: 0}
+  projectile: {fileID: -6770451878266142290, guid: ba5e911755835bb4593b200590a860a6,
     type: 3}
 --- !u!1 &9177224844689040706
 GameObject:

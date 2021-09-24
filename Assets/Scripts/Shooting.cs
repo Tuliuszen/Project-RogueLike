@@ -9,7 +9,6 @@ public class Shooting : MonoBehaviour
     public Projectile projectile;
 
     public float projectileSpeed = 10f;
-    public float destroyTime = 2f;
 
     int damage = 1;
 
@@ -20,7 +19,7 @@ public class Shooting : MonoBehaviour
         GetComponent<Animator>().SetTrigger("isAttacking");
     }
 
-    int SetProjectileDamage()
+    public int SetProjectileDamage()
     {
         if (GetComponent<PlayerController>() != null)
         {

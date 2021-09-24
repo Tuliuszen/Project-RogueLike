@@ -11,7 +11,7 @@ public class Projectile : MonoBehaviour
     public bool isPlayer = true;
 
     public float projectileSpeed = 10f;
-    public float destroyTime = 2f;
+    public float destroyTimer = 0.2f;
 
     private void Start()
     {
@@ -32,7 +32,7 @@ public class Projectile : MonoBehaviour
 
     public void InstantiateProjectile(GameObject projectilePrefab, int damage, Vector2 target, Transform shootingPoint)
     {
-        GameObject projectile = Instantiate(projectilePrefab, shootingPoint.position, Quaternion.identity);
+        GameObject projectile = Instantiate(projectilePrefab, shootingPoint.position,Quaternion.identity);
 
         Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>();
 
@@ -41,6 +41,7 @@ public class Projectile : MonoBehaviour
 
         projectileDamage = damage;
 
+        float destroyTime = destroyTimer;
         Destroy(projectile, destroyTime);
     }
 

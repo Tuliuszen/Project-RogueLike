@@ -14,7 +14,9 @@ public class PlayerController : MonoBehaviour
     public Vector2 movementDirection;
     public Vector2 mousePosition;
 
-    [SerializeField] float moveSpeed = 5f;
+    public Vector2 lastMoveDir;
+
+    public float moveSpeed = 5f;
 
     public void Start()
     {
@@ -36,7 +38,7 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        Move();
+        Move(moveSpeed,movementDirection);
     }
 
     private void MoveInput()
@@ -45,10 +47,13 @@ public class PlayerController : MonoBehaviour
         movementDirection.y = Input.GetAxisRaw("Vertical");
     }
 
-    private void Move()
+    public void Move(float speed, Vector2 direction)
     {
-        rb.MovePosition(rb.position + moveSpeed * Time.fixedDeltaTime * movementDirection);
+        rb.MovePosition(rb.position + speed * Time.fixedDeltaTime * direction);
+
+        lastMoveDir = movementDirection;
     }
+
 
     private void MovementAnimation()
     {
