@@ -16,11 +16,14 @@ public class EnemyController : MonoBehaviour
     public int pDMG = 1;
     Rigidbody2D rb;
     Vector2 direction, movement;
+    public int shootCheck = 6;
+    Animator animator;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         player = FindObjectOfType<PlayerController>().transform;
+        animator = GetComponent<Animator>();
 
         if (!rotates)
             rb.freezeRotation = true;
@@ -29,7 +32,8 @@ public class EnemyController : MonoBehaviour
     private void Update()
     {
         Move();
-        StartCoroutine(ShootingPlayer());
+        CheckForShoot();
+        MovementAnimation();
     }
 
     private void FixedUpdate()
@@ -64,18 +68,22 @@ public class EnemyController : MonoBehaviour
         rb.MovePosition((Vector2)transform.position + (moveSpeed * Time.deltaTime * direction));
     }
 
-    IEnumerator ShootingPlayer()
+    void CheckForShoot()
     {
-        ShootPlayer();
-        yield return new WaitForSecondsRealtime(3);
+        if (Random.Range(0, 1000) < shootCheck)
+        {
+            ShootPlayer();
+            new WaitForSecondsRealtime(2);
+        }
     }
     
     void ShootPlayer()
     {
         if (shooter)
         {
-            projectileScript.InstantiateProjectile(projectile, pDMG, player.position, gameObject.transform);
-            //GetComponent<Animator>().SetTrigger("isAttacking");
+            projectileScript.InstantiateProjectile(projectile, pDMG, player.position-transform.position, gameObject.transform);
+
+            animator.SetTrigger("isAttacking");
         }
         return;
     }
@@ -94,5 +102,12 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    
+    private void MovementAnimation()
+    {
+        if (shooter)
+        {
+            animator.SetFloat("Horizontal", direction.x);
+            animator.SetFloat("Speed", direction.sqrMagnitude);
+        }
+    }
 }

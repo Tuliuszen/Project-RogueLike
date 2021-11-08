@@ -36,7 +36,8 @@ public class Projectile : MonoBehaviour
 
         Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>();
 
-        rb.velocity = target * projectileSpeed;
+        //rb.velocity = target * projectileSpeed;
+        rb.AddForce(projectileSpeed * Time.deltaTime * target);
         projectile.transform.Rotate(0f, 0f, Mathf.Atan2(target.y, target.x) * Mathf.Rad2Deg);
 
         projectileDamage = damage;
@@ -60,6 +61,9 @@ public class Projectile : MonoBehaviour
     private bool CollisionCheck(Collider2D collision)
     {
         if (isPlayer && collision.gameObject.GetComponent<PlayerController>())
+            return true;
+
+        if (!isPlayer && collision.gameObject.GetComponent<EnemyController>())
             return true;
 
         if (collision.CompareTag("Walls"))

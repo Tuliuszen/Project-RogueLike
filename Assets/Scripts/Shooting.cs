@@ -8,8 +8,6 @@ public class Shooting : MonoBehaviour
     public GameObject projectilePrefab;
     public Projectile projectile;
 
-    public float projectileSpeed = 10f;
-
     int damage = 1;
 
     public void Shoot(Vector2 target)

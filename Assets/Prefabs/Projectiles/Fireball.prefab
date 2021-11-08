@@ -7,6 +7,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -6770451878266142290, guid: ba5e911755835bb4593b200590a860a6,
+        type: 3}
+      propertyPath: destroyTimer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -6770451878266142290, guid: ba5e911755835bb4593b200590a860a6,
+        type: 3}
+      propertyPath: projectileSpeed
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 3462690102366221657, guid: ba5e911755835bb4593b200590a860a6,
         type: 3}
       propertyPath: m_Name

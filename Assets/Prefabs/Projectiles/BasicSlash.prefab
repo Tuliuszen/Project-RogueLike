@@ -15,12 +15,12 @@ PrefabInstance:
     - target: {fileID: -6770451878266142290, guid: ba5e911755835bb4593b200590a860a6,
         type: 3}
       propertyPath: destroyTimer
-      value: 0.05
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -6770451878266142290, guid: ba5e911755835bb4593b200590a860a6,
         type: 3}
       propertyPath: projectileSpeed
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3462690102366221657, guid: ba5e911755835bb4593b200590a860a6,
         type: 3}

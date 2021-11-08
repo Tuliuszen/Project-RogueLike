@@ -146,5 +146,6 @@ MonoBehaviour:
   hitEffect: {fileID: 1617461893227688268, guid: bbbd344ee12f7d14e85384fd60d85a48,
     type: 3}
   projectileDamage: 1
-  projectileSpeed: 10
-  destroyTime: 2
+  isPlayer: 1
+  projectileSpeed: 1
+  destroyTimer: 0.2
