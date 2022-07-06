@@ -1,6 +1,6 @@
 # Project Rogue-Like
 
-#Simple abandoned project
+#Simple rogue-like combat prototype
 
 #Features:<br />
 -3 Classes with different skills: Warrior, Mage, Archer<br />
